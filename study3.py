@@ -1,34 +1,30 @@
-dictionary = {
-    1: 1,
-    2: 1
-}
+import random
+suits = ["club", "diamond", "heart", "spade"]
+faces = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
 
-counter = 0
+keep_going = True
+while keep_going:
+    my_face = random.choice(faces)
+    my_suit = random.choice(suits)
+    computer_face = random.choice(faces)
+    computer_suit = random.choice(suits)
+    print("my card is", my_suit + my_face)
+    print("computer's card is", computer_suit + computer_face)
 
-def fibo(n):
-    global counter
-    counter += 1
-
-    if n in dictionary:
-        return dictionary[n]
-    if n == 2:
-        return dictionary[n]
+    if faces.index(my_face) > faces.index(computer_face):
+        print("I won!!")
+    elif faces.index(my_face) < faces.index(computer_face):
+        print("I lost!!")
     else:
-        dictionary[n] = fibo(n - 1) + fibo(n - 2)
-        return dictionary[n]
+        if suits.index(my_suit) > suits.index(computer_suit):
+            print("I won!!")
+        elif suits.index(my_suit) < suits.index(computer_suit):
+            print("I lost!!")
+        else:
+            print("비겼습니다.")
 
-while (1):
-    x = int(input("피보나치 수열의 값을 구할 인수를 입력하세요(20보다 작은 값)? : "))
-    for i in range(1, x+1):
-        print("fibo({})의 값= {}, 계산수 = {}".format(i, fibo(i), counter))
-    retry = int(input("계속할까요? (예:1. 아니오:0) :"))
-    if retry == 0:
-        break
+    answer = input("[Enter]키를 누르면 한번 더, 다른 키를 누르면 종료 : ")
+    keep_going = (answer == "")
 
-    print()
-    
-for i in dictionary:
-    print(dictionary[i], end=" ")
 
-print()
-print(len(dictionary))
+
