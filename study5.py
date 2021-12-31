@@ -9,5 +9,21 @@ total = 100 # total_number_of_person
 
 memo = {}
 
-def problem(number_of_remaining_person, number_of_persons_seated):
-    key = str([number_of_remaining_person, number_of_persons_seated])
+def problem(n_remaining, n_seated):
+    key = str([n_remaining, n_seated])
+
+    if key in memo:
+        return memo[key]
+    if n_remaining < 0:
+        return 0
+    if n_remaining == 0:
+        return 1
+
+    count = 0
+    for i in range(n_seated, max+1):
+        count += problem(n_remaining - i, i)
+
+    memo[key] = count
+    return count
+
+print(problem(total, min))
