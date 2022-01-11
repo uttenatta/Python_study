@@ -9,6 +9,7 @@ def flatten(data):
             new.append(item)
             print(new)
     return new
+    
 
 example = [[1,2,3], [4,[5,6]], 7, [8,9]]
 print("원본", example)
@@ -20,7 +21,7 @@ flatten(example)
 
 print()
 print()
-print("변환", flatten(example))
+print("변환이후의 리스트\n\n", flatten(example))
 
 # 변환과정을 출력해보면....
 # 
